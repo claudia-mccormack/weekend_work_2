@@ -1,10 +1,10 @@
 # In honor of the new movie Batman vs. Superman
 # Create a Superhero class
-# Superheros have attributes 
-    # name (string, readable), 
-    # hitpoints (integer, writable), 
-    # attack (integer), 
-    # alive (boolean, set automatically as true, writable), 
+# Superheros have attributes
+    # name (string, readable),
+    # hitpoints (integer, writable),
+    # attack (integer),
+    # alive (boolean, set automatically as true, writable),
     # and has_special_tool (boolean, we want to describe if they have a special_tool start automatically to false, readable)
     # -- you decide if they have to be readable/writable attributes
 # Notice attributes are set as a single hash
@@ -13,6 +13,32 @@
 # if a Superhero has a special_tool their attack is tripled
 # if a Superhero is attacked and their hitpoints are less than 1, they are no longer alive
 # Superhero needs a grab_tool method, that sets the has_special_tool attribute to true.
+class Superhero
+  attr_reader :name, :attack, :has_special_tool
+  attr_writer :hitpoints, :alive
+
+  def initialize(attributes)
+    @name = attributes[:name]
+    @attack = attributes[:attack]
+    @hitpoints = attributes[:hitpoints]
+    @alive = true
+    @has_special_tool = false
+  end
+
+  def grab_tool
+    unless @has_special_tool = true
+      @grab_tool == !@has_special_tool
+    end
+    if @has_special_tool == true
+      @hitpoints * 3
+    end
+  end
+
+  def hit(target)
+    target.hitpoints = @hitpoints.to_i - @attack.to_i
+  end
+
+end
 
 
 # Driver code - don't touch anything below this line.
@@ -67,7 +93,7 @@ puts
 
 puts "• #{superman.name} has #{superman.hitpoints} hitpoints"
 puts "• #{batman.name} has #{batman.hitpoints} hitpoints"
-puts 
+puts
 
 puts "Superman hits Batman"
 puts "Testing..."
@@ -102,7 +128,7 @@ puts "Checking Stats..."
 puts
 puts "• #{superman.name} has #{superman.hitpoints} hitpoints"
 puts "• #{batman.name} has #{batman.hitpoints} hitpoints"
-puts 
+puts
 
 
 puts "Batman picks up Kryptonite (tool)"
@@ -118,7 +144,7 @@ end
 puts
 
 
-5.times do 
+5.times do
   puts "Batman hits Superman"
   batman.hit(superman)
   puts superman.hitpoints
@@ -141,4 +167,4 @@ else
   puts "• Superman is dead."
 end
 puts "• #{batman.name} has #{batman.hitpoints} hitpoints"
-puts 
+puts
